@@ -1,6 +1,7 @@
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 import { combineSlices, configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
+import { api } from './services/api'
 
 const rootReducer = combineSlices()
 
@@ -8,14 +9,16 @@ export type RootState = ReturnType<typeof rootReducer>
 
 export const makeStore = (preloadedState?: Partial<RootState>) => {
     const store = configureStore({
-        reducer: rootReducer,
+        reducer: {
+            [api.reducerPath]: api.reducer,
+        },
 
         middleware: (getDefaultMiddleware) => {
-            return getDefaultMiddleware().concat()
+            return getDefaultMiddleware().concat(api.middleware)
         },
         preloadedState,
     })
-   
+
     setupListeners(store.dispatch)
     return store
 }

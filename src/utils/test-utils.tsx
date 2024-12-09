@@ -6,19 +6,7 @@ import { Provider } from "react-redux"
 import type { AppStore, RootState } from "../app/store"
 import { makeStore } from "../app/store"
 
-/**
- * This type extends the default options for
- * React Testing Library's render function. It allows for
- * additional configuration such as specifying an initial Redux state and
- * a custom store instance.
- */
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
-  /**
-   * Defines a specific portion or the entire initial state for the Redux store.
-   * This is particularly useful for initializing the state in a
-   * controlled manner during testing, allowing components to be rendered
-   * with predetermined state conditions.
-   */
   preloadedState?: Partial<RootState>
 
   /**
@@ -56,7 +44,6 @@ export const renderWithProviders = (
     <Provider store={store}>{children}</Provider>
   )
 
-  // Return an object with the store and all of RTL's query functions
   return {
     store,
     user: userEvent.setup(),
