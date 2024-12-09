@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
-import { BASE_URL } from '../../shared/const'
-import { RootState } from '../store'
+import { BASE_URL } from '../shared/const'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${BASE_URL}/api`,
@@ -16,7 +15,7 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 })
 
-export const api = createApi({
+export const baseApi = createApi({
     reducerPath: 'splitApi',
     baseQuery: baseQueryWithRetry,
     refetchOnMountOrArgChange: true,

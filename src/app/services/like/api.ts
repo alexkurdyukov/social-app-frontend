@@ -1,6 +1,6 @@
-import { baseApi } from '../../baseApi';
-import { Like } from '../../types';
-import { ICreateLikeRequest } from './types';
+import type { Like } from '../../types'
+import { baseApi } from '../../baseApi'
+import type { ICreateLikeRequest } from './types'
 
 export const likeApiService = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -8,21 +8,21 @@ export const likeApiService = baseApi.injectEndpoints({
             query: (data) => ({
                 url: '/likes',
                 method: 'POST',
-                body: data
-            })
+                body: data,
+            }),
         }),
 
         unlikePost: builder.mutation<void, string>({
             query: (postId) => ({
                 url: `/likes/${postId}`,
-                method: 'DELETE'
-            })
-        })
-    })
-});
+                method: 'DELETE',
+            }),
+        }),
+    }),
+})
 
-export const { useLikePostMutation, useUnlikePostMutation } = likeApiService;
+export const { useLikePostMutation, useUnlikePostMutation } = likeApiService
 
 export const {
-    endpoints: { likePost, unlikePost }
-} = likeApiService;
+    endpoints: { likePost, unlikePost },
+} = likeApiService

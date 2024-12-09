@@ -1,6 +1,6 @@
-import { baseApi } from '../../baseApi';
-import { Post } from '../../types';
-import { ICreatePostRequest } from './types';
+import type { Post } from '../../types'
+import { baseApi } from '../../baseApi'
+import type { ICreatePostRequest } from './types'
 
 export const postApiService = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -8,40 +8,40 @@ export const postApiService = baseApi.injectEndpoints({
             query: (data) => ({
                 url: `/posts`,
                 method: 'POST',
-                body: data
-            })
+                body: data,
+            }),
         }),
 
         getAllPosts: builder.query<Post[], void>({
             query: () => ({
                 url: `/posts`,
-                method: 'GET'
-            })
+                method: 'GET',
+            }),
         }),
 
         getPostById: builder.query<Post, string>({
             query: (id) => ({
                 url: `/posts/${id}`,
-                method: 'GET'
-            })
+                method: 'GET',
+            }),
         }),
 
         deletePost: builder.query<void, string>({
             query: (id) => ({
                 url: `/posts/${id}`,
-                method: 'DELETE'
-            })
-        })
-    })
-});
+                method: 'DELETE',
+            }),
+        }),
+    }),
+})
 
 export const {
     useCreatePostMutation,
     useGetAllPostsQuery,
     useGetPostByIdQuery,
-    useDeletePostQuery
-} = postApiService;
+    useDeletePostQuery,
+} = postApiService
 
 export const {
-    endpoints: { createPost, getAllPosts, getPostById, deletePost }
-} = postApiService;
+    endpoints: { createPost, getAllPosts, getPostById, deletePost },
+} = postApiService

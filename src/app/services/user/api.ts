@@ -1,6 +1,6 @@
 import { baseApi } from '../../baseApi';
-import { User } from '../../types';
-import {
+import type { User } from '../../types';
+import type {
     ILoginRequest,
     ILoginResponse,
     IRegisterRequest,

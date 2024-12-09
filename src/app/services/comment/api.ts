@@ -1,5 +1,5 @@
-import { baseApi } from '../../baseApi';
-import { Comment } from '../../types';
+import type { Comment } from '../../types'
+import { baseApi } from '../../baseApi'
 
 export const commentApiService = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -7,22 +7,22 @@ export const commentApiService = baseApi.injectEndpoints({
             query: (data) => ({
                 url: '/posts',
                 method: 'POST',
-                body: data
-            })
+                body: data,
+            }),
         }),
 
         deleteComment: builder.mutation<void, string>({
             query: (commentId) => ({
                 url: `/posts/${commentId}`,
-                method: 'DELETE'
-            })
-        })
-    })
-});
+                method: 'DELETE',
+            }),
+        }),
+    }),
+})
 
 export const { useCreateCommentMutation, useDeleteCommentMutation } =
-    commentApiService;
+    commentApiService
 
 export const {
-    endpoints: { createComment, deleteComment }
-} = commentApiService;
+    endpoints: { createComment, deleteComment },
+} = commentApiService
