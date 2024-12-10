@@ -1,11 +1,9 @@
-import { Button } from '@nextui-org/react'
-
-const App = () => {
-    return (
-        <div className="App">
-            <Button color="primary">я next ui кнопка</Button>
-        </div>
-    )
+function App() {
+	return (
+		<div>
+			hello world
+		</div>
+	);
 }
 
-export default App
+export default App;
