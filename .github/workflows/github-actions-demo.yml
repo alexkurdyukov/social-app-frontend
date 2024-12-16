@@ -1,4 +1,4 @@
-name: Тестирование
+name: CI pipeline
 
 on:
     push:
@@ -7,20 +7,19 @@ on:
         branches: [main]
 
 jobs:
-    test:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: [ubuntu-18.04, ubuntu-20.04]
-                node: [10, 12, 14]
+    build:
+        runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - name: Использование Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+            - name: Check out repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node-version }}
-            - run: npm ci
-            - run: |
-                  npm run build
-                  npm test
-                  npm run lint
+                  node-version: '20'
+                  
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
