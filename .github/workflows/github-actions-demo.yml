@@ -1,25 +1,26 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Тестирование
+
 on:
-    pull_request:
-        branches: -main
     push:
         branches: [main]
+    pull_request:
+        branches: [main]
+
 jobs:
-    init:
-        runs-on: ubuntu-latest
+    test:
+        runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                node-version: [17.x]
+                os: [ubuntu-18.04, ubuntu-20.04]
+                node: [10, 12, 14]
         steps:
-            - name: install modules
-              run: npm install
-
-            - name: run build
-              run: npm run build
-
-            - name: run test
-              run: npm run test
-
-            - name: run lint
-              run: npm run lint
+            - uses: actions/checkout@v2
+            - name: Использование Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm ci
+            - run: |
+                  npm run build
+                  npm test
+                  npm run lint
