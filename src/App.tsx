@@ -1,16 +1,18 @@
 import { Button } from '@nextui-org/react';
-import Counter from './features/counter/Counter';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from './app/theme/ThemeProvider';
 
 function App() {
+    const navigate = useNavigate();
+
+    const { toggleTheme } = useContext(ThemeContext);
 
     return (
-        <div>
-            <Counter />
-            <div>
-                <Button className="bg-red-500 text-white p-4">
-                    Next UI button
-                </Button>
-            </div>
+        <div className="flex gap-8">
+            <span>hello i am root</span>
+            <Button onPress={() => navigate('/auth')}>Go to auth</Button>
+            <Button onPress={toggleTheme}>ChangeTheme</Button>
         </div>
     );
 }
