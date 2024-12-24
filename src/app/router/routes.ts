@@ -1,5 +1,6 @@
 export const ROUTES = {
-    ABOUT: '/about',
-    LAYOUT: '/layout',
+    LAYOUT: '/',
+    POSTS: '/',
+    POST: '/posts/:id',
     AUTH: '/auth',
 };
