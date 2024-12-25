@@ -3,4 +3,7 @@ export const ROUTES = {
     POSTS: '/',
     POST: '/posts/:id',
     AUTH: '/auth',
+    USER: 'users/:id',
+    FOLLOWERS: 'followers',
+    FOLLOWING: 'following',
 };
