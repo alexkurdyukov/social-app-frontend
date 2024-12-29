@@ -8,6 +8,7 @@ interface IButtonProps {
     type?: TButtonType;
     fullWidth?: boolean;
     color?: TButtonColors;
+    disabled?: boolean;
 }
 
 export const Button: React.FC<IButtonProps> = ({
@@ -17,6 +18,7 @@ export const Button: React.FC<IButtonProps> = ({
     type,
     fullWidth,
     color,
+    disabled,
 }) => {
     return (
         <NextUIButton
@@ -27,6 +29,7 @@ export const Button: React.FC<IButtonProps> = ({
             type={type}
             fullWidth={fullWidth}
             className={className}
+            disabled={disabled}
         >
             {children}
         </NextUIButton>

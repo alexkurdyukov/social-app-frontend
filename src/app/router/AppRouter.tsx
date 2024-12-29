@@ -4,8 +4,9 @@ import { Post } from 'pages/Post/Post';
 import { Profile } from 'pages/Profile/Profile';
 import { Following } from 'pages/Following/Following';
 import { Followers } from 'pages/Followers/Followers';
+import { Auth } from 'pages/Auth/Auth';
 import { ROUTES } from './routes';
-import { Layout } from 'shared/components'
+import { Layout } from 'shared/components';
 
 export const AppRouter = () => {
     return (
@@ -18,7 +19,7 @@ export const AppRouter = () => {
                     <Route path={ROUTES.FOLLOWERS} element={<Followers />} />
                     <Route path={ROUTES.FOLLOWING} element={<Following />} />
                 </Route>
-                <Route path={ROUTES.AUTH} element={<div>auth</div>}></Route>
+                <Route path={ROUTES.AUTH} element={<Auth />}></Route>
             </Routes>
         </BrowserRouter>
     );
